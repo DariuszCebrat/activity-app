@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\shop.domain\activity.domain.csproj" />
-    <ProjectReference Include="..\shop.infrastructure\activity.infrastructure.csproj" />
+    <ProjectReference Include="..\activity.domain\activity.domain.csproj" />
+    <ProjectReference Include="..\activity.infrastructure\activity.infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

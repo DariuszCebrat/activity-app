@@ -9,10 +9,10 @@ namespace activity.api.Controllers
 
     public class ActivitiesController : BaseApiController
     {
-        private readonly IRepositoryBase<Activity> _activityRepository;
+        private IRepositoryBase<Activity> _activityRepository;
         public ActivitiesController(IRepositoryBase<Activity> activityRepository)
         {
-            _activityRepository = _activityRepository;
+            _activityRepository = activityRepository;
         }
         [HttpGet]
         public async Task<ActionResult<List<Activity>>> GetActivities()

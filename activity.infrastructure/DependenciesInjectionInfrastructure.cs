@@ -13,10 +13,10 @@ namespace activity.infrastructure
 {
     public static class DependenciesInjectionInfrastructure
     {
-        public static IServiceCollection GetInfrastuctureServices(this IServiceCollection services)
+        public static void GetInfrastuctureServices(this IServiceCollection services)
         {
-           return services.AddScoped<ErrorHandlingMiddleware>()
-                .AddScoped<IRepositoryBase<Activity>,RepositoryBase<Activity>>();
+            services.AddScoped<ErrorHandlingMiddleware>();
+            services.AddScoped<IRepositoryBase<Activity>, RepositoryBase<Activity>>();
         }
 
     }

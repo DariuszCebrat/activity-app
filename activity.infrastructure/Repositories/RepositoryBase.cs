@@ -1,15 +1,10 @@
-﻿using activity.domain.Common;
+﻿using activity.domain.Interfaces.Repository;
 using activity.infrastructure.Exceptions;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace activity.infrastructure.Repositories
 {
-    public class RepositoryBase<Entity>where Entity : RepositoryEntity
+    public class RepositoryBase<Entity>:IRepositoryBase<Entity>where Entity : class
     {
         private DataContext _context;
         private DbSet<Entity> _entity;
@@ -22,18 +17,18 @@ namespace activity.infrastructure.Repositories
         {
             return _entity.AsQueryable();
         }
-        public  async Task<Entity> GetAsync(Guid id)
+        public  async Task<Entity> GetAsync(object id)
         {
-           var entity =await _entity.FirstOrDefaultAsync(x => x.Id == id);
+            var entity = await _entity.FindAsync(id);
            if (entity is null)
                 throw new NotFoundException();
 
             return entity;
         }
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(object id)
         {
-            var entity = await _entity.FirstOrDefaultAsync(x=>x.Id == id);
-            if(entity is null)
+            var entity = await _entity.FindAsync(id);
+            if (entity is null)
                 throw new NotFoundException();
 
             _entity.Remove(entity);

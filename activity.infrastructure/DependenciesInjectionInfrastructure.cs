@@ -1,4 +1,7 @@
-﻿using activity.infrastructure.Middleware;
+﻿using activity.domain.Entities;
+using activity.domain.Interfaces.Repository;
+using activity.infrastructure.Middleware;
+using activity.infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -12,7 +15,8 @@ namespace activity.infrastructure
     {
         public static IServiceCollection GetInfrastuctureServices(this IServiceCollection services)
         {
-           return services.AddScoped<ErrorHandlingMiddleware>();
+           return services.AddScoped<ErrorHandlingMiddleware>()
+                .AddScoped<IRepositoryBase<Activity>,RepositoryBase<Activity>>();
         }
 
     }

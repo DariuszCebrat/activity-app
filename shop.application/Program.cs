@@ -1,4 +1,5 @@
 using activity.infrastructure;
+using activity.infrastructure.Seeding;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,7 +35,8 @@ var services = scope.ServiceProvider;
 try
 {
     var context = services.GetRequiredService<DataContext>();
-    context.Database.Migrate();
+    await context.Database.MigrateAsync();
+    await Seed.SeedData(context);
 }
 catch (Exception ex)
 {

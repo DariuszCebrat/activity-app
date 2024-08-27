@@ -3,10 +3,10 @@ using activity.infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace activity.application.Controllers
+namespace activity.api.Controllers
 {
 
-    public class ActivitiesController:BaseApiController
+    public class ActivitiesController : BaseApiController
     {
         private DataContext _context;
         public ActivitiesController(DataContext context)

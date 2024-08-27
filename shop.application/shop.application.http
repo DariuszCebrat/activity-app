@@ -1,0 +1,6 @@
+@shop.application_HostAddress = http://localhost:5182
+
+GET {{shop.application_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

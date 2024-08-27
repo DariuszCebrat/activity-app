@@ -17,7 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\activity.application\activity.application.csproj" />
+    <ProjectReference Include="..\activity.domain\activity.domain.csproj" />
+    <ProjectReference Include="..\activity.infrastructure\activity.infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

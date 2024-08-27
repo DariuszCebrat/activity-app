@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace activity.domain.Common
 {
-    public abstract class RepositoryEntitie
+    public abstract class RepositoryEntity
     {
         public Guid Id { get; set; }
     }

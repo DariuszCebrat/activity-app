@@ -1,13 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using shop.domain.Entities;
+﻿using activity.domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
-namespace shop.infrastructure
+namespace activity.infrastructure
 {
-    public class DataContext:DbContext
+    public class DataContext : DbContext
     {
-        public DataContext(DbContextOptions options):base(options)
+        public DataContext(DbContextOptions options) : base(options)
         {
-            
+
         }
         public DbSet<Activity> Activities { get; set; }
     }

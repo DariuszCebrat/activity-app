@@ -1,5 +1,5 @@
+using activity.infrastructure;
 using Microsoft.EntityFrameworkCore;
-using shop.infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

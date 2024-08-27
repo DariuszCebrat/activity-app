@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shop.application", "shop.application.csproj", "{7CFD43B2-E1B2-4788-BA96-78E316F71503}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "activity.application", "activity.application.csproj", "{7CFD43B2-E1B2-4788-BA96-78E316F71503}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shop.domain", "..\shop.domain\shop.domain.csproj", "{7E8127BD-D359-47BC-9E3F-53544B006282}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "activity.domain", "..\shop.domain\activity.domain.csproj", "{7E8127BD-D359-47BC-9E3F-53544B006282}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shop.infrastructure", "..\shop.infrastructure\shop.infrastructure.csproj", "{8BBA8B4B-626D-4FDD-BADF-B33D362CBDEB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "activity.infrastructure", "..\shop.infrastructure\activity.infrastructure.csproj", "{8BBA8B4B-626D-4FDD-BADF-B33D362CBDEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

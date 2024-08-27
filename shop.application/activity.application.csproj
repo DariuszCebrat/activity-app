@@ -15,12 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\shop.domain\activity.domain.csproj" />
+    <ProjectReference Include="..\shop.infrastructure\activity.infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\shop.domain\shop.domain.csproj" />
-    <ProjectReference Include="..\shop.infrastructure\shop.infrastructure.csproj" />
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>

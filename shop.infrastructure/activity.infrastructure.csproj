@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\shop.domain\shop.domain.csproj" />
+    <ProjectReference Include="..\shop.domain\activity.domain.csproj" />
   </ItemGroup>
 
 </Project>

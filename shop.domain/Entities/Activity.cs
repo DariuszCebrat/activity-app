@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace shop.domain.Entities
+namespace activity.domain.Entities
 {
     public class Activity
     {

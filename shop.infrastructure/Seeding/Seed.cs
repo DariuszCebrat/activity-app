@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace shop.infrastructure.Seeding
+namespace activity.infrastructure.Seeding
 {
     public class Seed
     {

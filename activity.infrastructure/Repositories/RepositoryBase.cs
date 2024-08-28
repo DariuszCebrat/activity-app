@@ -1,6 +1,7 @@
 ﻿using activity.domain.Interfaces.Repository;
 using activity.infrastructure.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 namespace activity.infrastructure.Repositories
 {
@@ -34,10 +35,14 @@ namespace activity.infrastructure.Repositories
             _entity.Remove(entity);
            await SaveChangesAsync();
         }
-        public async Task CreateAsync(Entity newEntity)
+        public async Task<object> CreateAsync(Entity newEntity)
         {
             await _entity.AddAsync(newEntity);
             await SaveChangesAsync();
+            var type =newEntity.GetType();
+            PropertyInfo idProp = type.GetProperty("Id");
+            object id = idProp.GetValue(newEntity);
+            return id;
         }
         public async Task UpdateAsync(Entity updatedEntity)
         {

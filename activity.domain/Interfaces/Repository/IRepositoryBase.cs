@@ -11,7 +11,7 @@ namespace activity.domain.Interfaces.Repository
         public IQueryable<Entity> GetAll();
         public  Task<Entity> GetAsync(object id);
         public  Task DeleteAsync(object id);
-        public  Task CreateAsync(Entity newEntity);
+        public  Task<object> CreateAsync(Entity newEntity);
         public  Task UpdateAsync(Entity updatedEntity);
     }
 }

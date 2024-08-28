@@ -2,6 +2,14 @@ using activity.infrastructure;
 using activity.infrastructure.Middleware;
 using activity.infrastructure.Seeding;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using FluentValidation.AspNetCore;
+using activity.api.Mapper;
+using FluentValidation;
+using activity.api.CQRS_Functions.Command.ActivityCommand;
+using activity.api.DTO.ActivityDto.Validators;
+using activity.api.DTO.ActivityDto;
+using activity.api.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +18,6 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.GetInfrastuctureServices();
 builder.Services.AddDbContext<DataContext>(opt =>
 {
@@ -23,6 +30,10 @@ builder.Services.AddCors(opt =>
         policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000", "https://localhost:3000");
     });
 });
+
+builder.Services.GetValidators();
+builder.Services.ExtendServicesByNugets();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

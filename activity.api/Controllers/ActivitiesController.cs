@@ -12,7 +12,8 @@ namespace activity.api.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Activity>>> GetActivities()
         {
-            return Ok(await Mediator.Send(new GetActivitiesQuery.Request()));
+            var response = await Mediator.Send(new GetActivitiesQuery.Request());
+            return Ok(response.activities );
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<Activity>> GetActivity([FromRoute] Guid id)

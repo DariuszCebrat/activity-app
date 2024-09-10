@@ -36,6 +36,7 @@ builder.Services.AddCors(opt =>
 builder.Services.GetValidators();
 builder.Services.ExtendServicesByNugets();
 builder.Services.AddIdentityServices(builder.Configuration);
+builder.Services.AddServices();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

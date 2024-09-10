@@ -1,5 +1,6 @@
 ﻿using activity.api.DTO.IdentityDto;
 using activity.domain.Entities;
+using activity.domain.Interfaces.Services;
 using activity.infrastructure.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
@@ -12,10 +13,12 @@ namespace activity.api.CQRS_Functions.Query.AccountQuery
         public class Handler : IRequestHandler<Request,Response>
         {
             private readonly UserManager<AppUser> _userManager;
+            private readonly ITokenService _tokenService;
 
-            public Handler(UserManager<AppUser> userManager)
+            public Handler(UserManager<AppUser> userManager,ITokenService tokenService)
             {
                 _userManager = userManager;
+                _tokenService = tokenService;
             }
 
             public async Task<Response> Handle(Request request, CancellationToken cancellationToken)
@@ -27,11 +30,12 @@ namespace activity.api.CQRS_Functions.Query.AccountQuery
                 var result = await _userManager.CheckPasswordAsync(user, request.loginDto.Password);
                 if (result)
                 {
+
                     return new Response(new UserDto
                     {
                         DisplayName = user.DisplayName,
                         Image = null,
-                        Token = "this will be token",
+                        Token = _tokenService.CreateToken(user),
                         UserName = user.UserName
                     });
                     

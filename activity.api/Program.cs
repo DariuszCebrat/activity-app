@@ -10,6 +10,8 @@ using activity.api.CQRS_Functions.Command.ActivityCommand;
 using activity.api.DTO.ActivityDto.Validators;
 using activity.api.DTO.ActivityDto;
 using activity.api.Extensions;
+using Microsoft.AspNetCore.Identity;
+using activity.domain.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,7 +35,7 @@ builder.Services.AddCors(opt =>
 
 builder.Services.GetValidators();
 builder.Services.ExtendServicesByNugets();
-
+builder.Services.AddIdentityServices(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -55,8 +57,9 @@ var services = scope.ServiceProvider;
 try
 {
     var context = services.GetRequiredService<DataContext>();
+    var userManager = services.GetRequiredService<UserManager<AppUser>>();
     await context.Database.MigrateAsync();
-    await Seed.SeedData(context);
+    await Seed.SeedData(context,userManager);
 }
 catch (Exception ex)
 {

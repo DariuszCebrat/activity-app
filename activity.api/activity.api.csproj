@@ -22,4 +22,8 @@
     <ProjectReference Include="..\activity.infrastructure\activity.infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTO\IdentityDto\Validators\" />
+  </ItemGroup>
+
 </Project>

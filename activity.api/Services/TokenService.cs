@@ -11,6 +11,14 @@ namespace activity.api.Services
 {
     public class TokenService: ITokenService
     {
+        private readonly IConfiguration _config;
+
+        public TokenService(IConfiguration config)
+        {
+            _config = config;
+        }
+
+
         public string CreateToken(AppUser user)
         {
 
@@ -22,7 +30,7 @@ namespace activity.api.Services
 
             };
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("super_secure_token_for_use_to_hide_But_We_havedwadadWDWADADAWDADDWADADADWADwdadadadadadadadadwadadadadadadWADADWA"));
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"]));
             var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
             var tokenDescriptor = new SecurityTokenDescriptor
             {

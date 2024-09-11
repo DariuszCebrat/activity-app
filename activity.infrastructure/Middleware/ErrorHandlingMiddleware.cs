@@ -27,6 +27,11 @@ namespace activity.infrastructure.Middleware
                 context.Response.StatusCode = 404;
                 await context.Response.WriteAsync(exception.Message);
             }
+            catch (BadRequestException exception)
+            {
+                context.Response.StatusCode = 400;
+                await context.Response.WriteAsync(exception.Message);
+            }
             catch(UnauthorizedException exception)
             {
                 context.Response.StatusCode =401 ;

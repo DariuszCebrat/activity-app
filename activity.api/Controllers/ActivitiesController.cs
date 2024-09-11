@@ -2,13 +2,14 @@
 using activity.api.CQRS_Functions.Query.ActivityQuery;
 using activity.api.DTO.ActivityDto;
 using activity.domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace activity.api.Controllers
 {
     public class ActivitiesController : BaseApiController
     {
-
+        
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Activity>>> GetActivities()
         {

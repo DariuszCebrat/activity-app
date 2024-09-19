@@ -26,6 +26,7 @@ namespace activity.infrastructure.Repositories
 
             return entity;
         }
+
         public async Task DeleteAsync(object id)
         {
             var entity = await _entity.FindAsync(id);
@@ -41,7 +42,7 @@ namespace activity.infrastructure.Repositories
             await SaveChangesAsync();
             var type =newEntity.GetType();
             PropertyInfo idProp = type.GetProperty("Id");
-            object id = idProp.GetValue(newEntity);
+            var id = idProp?.GetValue(newEntity);
             return id;
         }
         public async Task UpdateAsync(Entity updatedEntity)

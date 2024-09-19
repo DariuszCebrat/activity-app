@@ -13,6 +13,7 @@ namespace activity.api.Extensions
            services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
            services.AddAutoMapper(typeof(MappingProfile));
            services.AddSwaggerGen();
+
         }
     }
 }

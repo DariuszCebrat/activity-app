@@ -1,21 +1,20 @@
-﻿using System;
+﻿using activity.api.DTO.IdentityDto;
+using activity.domain.Entities;
 using System.ComponentModel.DataAnnotations;
 
-namespace activity.domain.Entities
+namespace activity.api.DTO.ActivityDto
 {
-    public class Activity 
+    public class ActivityDto
     {
         public Guid Id { get; set; }
-        [MaxLength(100)]
         required public string Title { get; set; }
         required public DateTime Date { get; set; }
         required public string Description { get; set; }
-        [MaxLength(100)]
+       
         required public string Category { get; set; }
-        [MaxLength(100)]
         required public string City { get; set; }
-        [MaxLength(100)]
         required public string Venue { get; set; }
-        public ICollection<ActivityAttendee> Attendies { get; set; } = new List<ActivityAttendee>();
+        public string HostUserName { get; set; }
+        public ICollection<Profile> Profiles { get; set; }
     }
 }

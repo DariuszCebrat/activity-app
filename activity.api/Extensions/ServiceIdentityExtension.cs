@@ -1,6 +1,8 @@
 ﻿using activity.domain.Entities;
 using activity.infrastructure;
+using activity.infrastructure.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
 using System.Text;
@@ -30,6 +32,14 @@ namespace activity.api.Extensions
                         ValidateAudience = false,
                     };
                 });
+            services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("IsActivityHost", policy =>
+                {
+                    policy.Requirements.Add(new IsHostRequirement());
+                });
+            });
+            services.AddTransient<IAuthorizationHandler, IsHostRequirementHandler>();
             return services;
         }
     }

@@ -29,6 +29,7 @@ namespace activity.api.Controllers
             var response = await Mediator.Send(request);
             return Ok(response.Id);
         }
+        [Authorize(Policy ="IsActivityHost")]
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateActivity([FromRoute] Guid id, [FromBody] EditActivityDto dto)
         {
@@ -37,6 +38,8 @@ namespace activity.api.Controllers
             await Mediator.Send(request);
             return Ok();
         }
+
+        [Authorize(Policy = "IsActivityHost")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAcivity([FromRoute]Guid id)
         {

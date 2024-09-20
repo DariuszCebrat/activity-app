@@ -47,5 +47,11 @@ namespace activity.api.Controllers
             return Ok();
         }
 
+        [HttpPost("{id}/attend")]
+        public async Task<IActionResult> Attend([FromRoute]Guid id)
+        {
+            await Mediator.Send(new UpdateAttendeeCommand.Request(id));
+            return Ok();
+        }
     }
 }

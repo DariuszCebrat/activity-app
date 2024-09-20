@@ -1,6 +1,7 @@
 ﻿using activity.domain.Interfaces.Repository;
 using activity.infrastructure.Exceptions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System.Reflection;
 
 namespace activity.infrastructure.Repositories
@@ -8,10 +9,12 @@ namespace activity.infrastructure.Repositories
     public class RepositoryBase<Entity>:IRepositoryBase<Entity>where Entity : class
     {
         private DataContext _context;
+        //private readonly ILogger _logger;
         private DbSet<Entity> _entity;
-        public RepositoryBase(DataContext context)
+        public RepositoryBase(DataContext context)//,ILogger logger)
         {
             _context = context;
+            //_logger = logger;
             _entity = _context.Set<Entity>();
         }
         public IQueryable<Entity> GetAll()
@@ -49,13 +52,36 @@ namespace activity.infrastructure.Repositories
         {
             var entityEntry = _context.Entry<Entity>(updatedEntity);
             entityEntry.State = EntityState.Modified;
-           await SaveChangesAsync();
-
+           var result = await SaveChangesAsync();
+            if (result < 1)
+            {
+               // LogEntityProperties(updatedEntity,"update");
+                throw new Exception("Coulnd not update entity");
+            }
         }
-        private async Task SaveChangesAsync()
+        private async Task<int> SaveChangesAsync()
         {
-           await _context.SaveChangesAsync();
+           return await _context.SaveChangesAsync();
         }
 
+        //private void LogEntityProperties(Entity entity,string action)
+        //{
+        //    List<string> values = new List<string>();
+        //    Type type = typeof(Entity);
+
+        //    // Pobieranie wszystkich właściwości obiektu
+        //    PropertyInfo[] properties = type.GetProperties();
+
+        //    // Pętla przez właściwości
+        //    foreach (var property in properties)
+        //    {
+        //        // Pobranie wartości właściwości dla bieżącego obiektu
+        //        object value = property.GetValue(entity);
+
+        //        values.Add($"{property.Name}: {value}");
+
+        //    }
+        //    _logger.LogWarning($"Błąd {action} dla {entity.GetType()} obiekt z wartościami {String.Join("/n",values)} ");
+        //}
     }
 }

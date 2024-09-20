@@ -15,6 +15,7 @@ namespace activity.api.DTO.ActivityDto
         required public string City { get; set; }
         required public string Venue { get; set; }
         public string HostUserName { get; set; }
+        public bool IsCancelled { get; set; }
         public ICollection<Profile> Profiles { get; set; }
     }
 }

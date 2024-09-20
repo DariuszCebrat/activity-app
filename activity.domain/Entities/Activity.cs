@@ -16,6 +16,7 @@ namespace activity.domain.Entities
         required public string City { get; set; }
         [MaxLength(100)]
         required public string Venue { get; set; }
+        public bool IsCancelled { get; set; } = false;
         public ICollection<ActivityAttendee> Attendies { get; set; } = new List<ActivityAttendee>();
     }
 }

@@ -35,7 +35,7 @@ namespace activity.api.CQRS_Functions.Query.AccountQuery
                     DisplayName = user.DisplayName,
                     Image = null,
                     Token = _tokenService.CreateToken(user),
-                     UserName = user.DisplayName,
+                     UserName = user.UserName,
                 });
             }
         }

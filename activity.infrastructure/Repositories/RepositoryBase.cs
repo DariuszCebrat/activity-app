@@ -9,12 +9,10 @@ namespace activity.infrastructure.Repositories
     public class RepositoryBase<Entity>:IRepositoryBase<Entity>where Entity : class
     {
         private DataContext _context;
-        //private readonly ILogger _logger;
         private DbSet<Entity> _entity;
-        public RepositoryBase(DataContext context)//,ILogger logger)
+        public RepositoryBase(DataContext context)
         {
             _context = context;
-            //_logger = logger;
             _entity = _context.Set<Entity>();
         }
         public IQueryable<Entity> GetAll()
@@ -55,7 +53,6 @@ namespace activity.infrastructure.Repositories
            var result = await SaveChangesAsync();
             if (result < 1)
             {
-               // LogEntityProperties(updatedEntity,"update");
                 throw new Exception("Coulnd not update entity");
             }
         }
@@ -64,24 +61,6 @@ namespace activity.infrastructure.Repositories
            return await _context.SaveChangesAsync();
         }
 
-        //private void LogEntityProperties(Entity entity,string action)
-        //{
-        //    List<string> values = new List<string>();
-        //    Type type = typeof(Entity);
-
-        //    // Pobieranie wszystkich właściwości obiektu
-        //    PropertyInfo[] properties = type.GetProperties();
-
-        //    // Pętla przez właściwości
-        //    foreach (var property in properties)
-        //    {
-        //        // Pobranie wartości właściwości dla bieżącego obiektu
-        //        object value = property.GetValue(entity);
-
-        //        values.Add($"{property.Name}: {value}");
-
-        //    }
-        //    _logger.LogWarning($"Błąd {action} dla {entity.GetType()} obiekt z wartościami {String.Join("/n",values)} ");
-        //}
+        
     }
 }

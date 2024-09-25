@@ -18,6 +18,7 @@ namespace activity.infrastructure
             services.AddScoped<ErrorHandlingMiddleware>();
             services.AddScoped<IRepositoryBase<Activity>, RepositoryBase<Activity>>();
             services.AddScoped<IRepositoryBase<ActivityAttendee>, RepositoryBase<ActivityAttendee>>();
+            services.AddScoped<IRepositoryBase<AppUser>,RepositoryBase<AppUser>>();
         }
 
     }

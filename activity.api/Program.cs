@@ -40,7 +40,7 @@ builder.Services.AddCors(opt =>
 });
 
 builder.Services.GetValidators();
-builder.Services.ExtendServicesByNugets();
+builder.Services.ExtendServicesByNugets(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddServices();
 var app = builder.Build();

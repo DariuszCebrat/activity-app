@@ -10,6 +10,7 @@ namespace activity.api.Extensions
             services.AddScoped<ITokenService,TokenService>();
             services.AddHttpContextAccessor();
             services.AddScoped<IUserAccessor, UserAccessor>();
+            services.AddScoped<IPhotoAccessorService, PhotoAccessorService>();
         }
     }
 }
